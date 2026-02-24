@@ -1,5 +1,6 @@
 import { Stack } from "expo-router";
 import "react-native-reanimated";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 export const unstable_settings = {
   anchor: "(tabs)",
@@ -7,8 +8,12 @@ export const unstable_settings = {
 
 export default function RootLayout() {
   return (
-    <Stack>
-      <Stack.Screen name="(tabs)/Home/Home" options={{ headerShown: false }} />
-    </Stack>
+    <SafeAreaProvider>
+      <SafeAreaView>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        </Stack>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
