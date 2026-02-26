@@ -12,6 +12,8 @@ export default function TabLayout() {
         name="index"
         options={{
           title: "Home",
+          headerShown: true,
+          headerTitle: "Home",
         }}
       />
     </Tabs>
