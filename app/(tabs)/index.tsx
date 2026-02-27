@@ -4,13 +4,13 @@ export default function Index() {
   return (
     <>
       <View style={styles.meteo_basic}>
-        <Text> Hello World</Text>
+        <Text> </Text>
       </View>
       <View style={styles.meteo_searchbar}>
-        <Text> Hello World</Text>
+        <Text> </Text>
       </View>
       <View style={styles.meteo_advanced}>
-        <Text> Hello World oj</Text>
+        <Text> </Text>
       </View>
     </>
   );

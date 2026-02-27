@@ -11,7 +11,11 @@ export const unstable_settings = {
 
 export default function RootLayout() {
   return (
-    <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
+    <ImageBackground
+      source={backgroundImage}
+      style={styles.backgroundImage}
+      imageStyle={styles.img}
+    >
       <SafeAreaProvider>
         <SafeAreaView style={styles.container}>
           <Stack
