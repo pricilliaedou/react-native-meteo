@@ -1,3 +1,4 @@
+import { MeteoAPI } from "@/api/meteo";
 import {
   getCurrentPositionAsync,
   requestForegroundPermissionsAsync,
@@ -10,10 +11,17 @@ export default function Index() {
     lat: number;
     lon: number;
   }>(null);
+  const [weather, setWeather] = useState<null | any>(null);
 
   useEffect(() => {
     getUsercoords();
   }, []);
+
+  useEffect(() => {
+    if (coords) {
+      fetchWeather(coords);
+    }
+  }, [coords]);
 
   async function getUsercoords() {
     let { status } = await requestForegroundPermissionsAsync();
@@ -24,11 +32,18 @@ export default function Index() {
         lon: location.coords.longitude,
       });
     } else {
-      setCoords({ lat: 48.8566, lon: 2.3522 });
+      setCoords({ lat: 48.8575, lon: 2.3514 });
     }
   }
 
   console.log(coords);
+
+  async function fetchWeather(coordinates: { lat: number; lon: number }) {
+    const weatherResponse = await MeteoAPI.fetchWeatherFromCoords(coordinates);
+    setWeather(weatherResponse);
+  }
+
+  console.log(weather);
 
   return (
     <>
