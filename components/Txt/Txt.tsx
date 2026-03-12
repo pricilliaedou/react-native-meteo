@@ -1,8 +1,9 @@
+import { ReactNode } from "react";
 import { StyleProp, Text, TextStyle } from "react-native";
 import { styles } from "./Txt.style";
 
 interface TxtProps {
-  children: string;
+  children: ReactNode;
   style?: StyleProp<TextStyle>;
 }
 

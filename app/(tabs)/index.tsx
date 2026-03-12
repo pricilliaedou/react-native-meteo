@@ -13,6 +13,7 @@ export default function Index() {
     lon: number;
   }>(null);
   const [weather, setWeather] = useState<null | any>(null);
+  const currentWeather = weather?.current_weather;
 
   useEffect(() => {
     getUsercoords();
@@ -50,10 +51,10 @@ export default function Index() {
 
   console.log(weather);
 
-  return (
+  return currentWeather ? (
     <>
       <View style={styles.meteo_basic}>
-        <MeteoBasic />
+        <MeteoBasic temperature={Math.round(currentWeather?.temperature)} />
       </View>
       <View style={styles.meteo_searchbar}>
         <Text> </Text>
@@ -62,7 +63,7 @@ export default function Index() {
         <Text> </Text>
       </View>
     </>
-  );
+  ) : null;
 }
 
 const styles = StyleSheet.create({
