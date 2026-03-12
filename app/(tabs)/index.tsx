@@ -1,5 +1,5 @@
 import { MeteoAPI } from "@/api/meteo";
-import Txt from "@/components/Txt/Txt";
+import MeteoBasic from "@/components/MeteoBasic/MeteoBasic";
 import {
   getCurrentPositionAsync,
   requestForegroundPermissionsAsync,
@@ -53,7 +53,7 @@ export default function Index() {
   return (
     <>
       <View style={styles.meteo_basic}>
-        <Txt style={{ fontSize: 60 }}>Hello World</Txt>
+        <MeteoBasic />
       </View>
       <View style={styles.meteo_searchbar}>
         <Text> </Text>

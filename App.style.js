@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
     backgroundColor: "black", //Permet d'assombrir m'image en rajoutant l'opacité plus bas dans img)
+    padding: 20,
   },
   img: { opacity: 0.75 },
 });
