@@ -1,4 +1,5 @@
 import { MeteoAPI } from "@/api/meteo";
+import Txt from "@/components/Txt/Txt";
 import {
   getCurrentPositionAsync,
   requestForegroundPermissionsAsync,
@@ -24,15 +25,19 @@ export default function Index() {
   }, [coords]);
 
   async function getUsercoords() {
-    let { status } = await requestForegroundPermissionsAsync();
-    if (status === "granted") {
-      const location = await getCurrentPositionAsync();
-      setCoords({
-        lat: location.coords.latitude,
-        lon: location.coords.longitude,
-      });
-    } else {
-      setCoords({ lat: 48.8575, lon: 2.3514 });
+    try {
+      let { status } = await requestForegroundPermissionsAsync();
+      if (status === "granted") {
+        let location = await getCurrentPositionAsync();
+        console.log("location", location);
+        setCoords({
+          lat: location.coords.latitude,
+          lon: location.coords.longitude,
+        });
+      }
+    } catch (error) {
+      console.log("error", error);
+      setCoords({ lat: 48.9562, lon: 2.8885 });
     }
   }
 
@@ -48,7 +53,7 @@ export default function Index() {
   return (
     <>
       <View style={styles.meteo_basic}>
-        <Text> </Text>
+        <Txt style={{ fontSize: 60 }}>Hello World</Txt>
       </View>
       <View style={styles.meteo_searchbar}>
         <Text> </Text>

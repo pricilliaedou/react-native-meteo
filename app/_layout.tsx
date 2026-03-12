@@ -1,5 +1,6 @@
 import { styles } from "@/App.style";
 import backgroundImage from "@/assets/images/background.png";
+import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { ImageBackground } from "react-native";
 import "react-native-reanimated";
@@ -10,6 +11,10 @@ export const unstable_settings = {
 };
 
 export default function RootLayout() {
+  const [isFontsLoaded] = useFonts({
+    "Alata-Regular": require("@/assets/fonts/Alata-Regular.ttf"),
+  });
+
   return (
     <ImageBackground
       source={backgroundImage}
@@ -18,11 +23,15 @@ export default function RootLayout() {
     >
       <SafeAreaProvider>
         <SafeAreaView style={styles.container}>
-          <Stack
-            screenOptions={{ contentStyle: { backgroundColor: "transparent" } }}
-          >
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          </Stack>
+          {isFontsLoaded ? (
+            <Stack
+              screenOptions={{
+                contentStyle: { backgroundColor: "transparent" },
+              }}
+            >
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            </Stack>
+          ) : null}
         </SafeAreaView>
       </SafeAreaProvider>
     </ImageBackground>
