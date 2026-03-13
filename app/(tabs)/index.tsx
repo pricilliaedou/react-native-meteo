@@ -1,11 +1,12 @@
 import { MeteoAPI } from "@/api/meteo";
 import MeteoBasic from "@/components/MeteoBasic/MeteoBasic";
+import { getWeatherInterpretation } from "@/services/meteo-service";
 import {
   getCurrentPositionAsync,
   requestForegroundPermissionsAsync,
 } from "expo-location";
 import { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ImageSourcePropType, StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
   const [coords, setCoords] = useState<null | {
@@ -54,7 +55,15 @@ export default function Index() {
   return currentWeather ? (
     <>
       <View style={styles.meteo_basic}>
-        <MeteoBasic temperature={Math.round(currentWeather?.temperature)} />
+        <MeteoBasic
+          temperature={Math.round(currentWeather?.temperature)}
+          city="Todo"
+          label={getWeatherInterpretation(currentWeather?.weathercode)?.label}
+          weather_image={
+            getWeatherInterpretation(currentWeather?.weathercode)
+              ?.image as ImageSourcePropType
+          }
+        />
       </View>
       <View style={styles.meteo_searchbar}>
         <Text> </Text>

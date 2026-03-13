@@ -1,4 +1,4 @@
-import { Image, View } from "react-native";
+import { Image, ImageSourcePropType, View } from "react-native";
 import Txt from "../Txt/Txt";
 import { styles } from "./MeteoBasic.style";
 
@@ -6,7 +6,7 @@ interface MeteoBasicProps {
   city?: string;
   label?: string;
   temperature?: number;
-  weather_image?: string;
+  weather_image?: ImageSourcePropType;
 }
 
 export default function MeteoBasic({
@@ -21,13 +21,13 @@ export default function MeteoBasic({
         <Txt>Clock</Txt>
       </View>
 
-      <Txt>City</Txt>
+      <Txt>{city}</Txt>
 
-      <Txt style={styles.weather_label}>Label</Txt>
+      <Txt style={styles.weather_label}>{label}</Txt>
 
       <View style={styles.temperature_box}>
         <Txt style={styles.temperature_value}>{temperature}° </Txt>
-        <Image style={styles.weather_image} />
+        <Image style={styles.weather_image} source={weather_image} />
       </View>
     </>
   );
