@@ -17,7 +17,7 @@ export default function Index() {
   const currentWeather = weather?.current_weather;
 
   useEffect(() => {
-    getUsercoords();
+    getUserCoords();
   }, []);
 
   useEffect(() => {
@@ -26,11 +26,11 @@ export default function Index() {
     }
   }, [coords]);
 
-  async function getUsercoords() {
+  async function getUserCoords() {
     try {
       let { status } = await requestForegroundPermissionsAsync();
       if (status === "granted") {
-        let location = await getCurrentPositionAsync();
+        const location = await getCurrentPositionAsync();
         console.log("location", location);
         setCoords({
           lat: location.coords.latitude,
