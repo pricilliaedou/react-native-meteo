@@ -25,7 +25,7 @@ export default function MeteoAdvanced({
       </StyledItem>
       <StyledItem>
         <StyledValue>{dawn}</StyledValue>
-        <StyledLabel>Crepuscule</StyledLabel>
+        <StyledLabel>Crépuscule</StyledLabel>
       </StyledItem>
       <StyledItem>
         <StyledValue>{wind} km/h</StyledValue>

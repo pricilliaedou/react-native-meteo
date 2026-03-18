@@ -21,6 +21,12 @@ export default function TabLayout() {
           title: "Home",
         }}
       />
+      <Tabs.Screen
+        name="forecast"
+        options={{
+          title: "Prévision",
+        }}
+      />
     </Tabs>
   );
 }
