@@ -13,5 +13,5 @@ export default function Clock() {
     return () => clearInterval(interval);
   }, []);
 
-  return <Txt style={styles.time}>{nowToHHMM()}</Txt>;
+  return <Txt style={styles.time}>{time}</Txt>;
 }

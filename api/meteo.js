@@ -8,4 +8,20 @@ export class MeteoAPI {
       )
     ).data;
   }
+
+  static async fetchCityFromCoords(coords) {
+    const {
+      address: { city, village, town },
+    } = (
+      await axios.get(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${coords.lat}&lon=${coords.lon}`,
+        {
+          headers: {
+            "User-Agent": "foobar/1.0",
+          },
+        },
+      )
+    ).data;
+    return city || village || town;
+  }
 }

@@ -14,6 +14,8 @@ export default function Index() {
     lon: number;
   }>(null);
   const [weather, setWeather] = useState<null | any>(null);
+  const [city, setCity] = useState<string>();
+
   const currentWeather = weather?.current_weather;
 
   useEffect(() => {
@@ -23,6 +25,7 @@ export default function Index() {
   useEffect(() => {
     if (coords) {
       fetchWeather(coords);
+      fetchCity(coords);
     }
   }, [coords]);
 
@@ -50,14 +53,20 @@ export default function Index() {
     setWeather(weatherResponse);
   }
 
-  console.log(weather);
+  async function fetchCity(coordinates: { lat: number; lon: number }) {
+    const cityResponse = await MeteoAPI.fetchCityFromCoords(coordinates);
+    console.log("cityResponse", cityResponse);
+    setCity(cityResponse);
+  }
+
+  // console.log(weather);
 
   return currentWeather ? (
     <>
       <View style={styles.meteo_basic}>
         <MeteoBasic
           temperature={Math.round(currentWeather?.temperature)}
-          city="Todo"
+          city={city}
           label={getWeatherInterpretation(currentWeather?.weathercode)?.label}
           weather_image={
             getWeatherInterpretation(currentWeather?.weathercode)
