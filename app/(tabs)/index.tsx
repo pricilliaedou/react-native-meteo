@@ -1,4 +1,5 @@
 import { MeteoAPI } from "@/api/meteo";
+import MeteoAdvanced from "@/components/MeteoAdvanced/MeteoAdvanced";
 import MeteoBasic from "@/components/MeteoBasic/MeteoBasic";
 import { getWeatherInterpretation } from "@/services/meteo-service";
 import {
@@ -78,7 +79,11 @@ export default function Index() {
         <Text> </Text>
       </View>
       <View style={styles.meteo_advanced}>
-        <Text> </Text>
+        <MeteoAdvanced
+          wind={currentWeather?.windspeed}
+          dusk={weather?.daily?.sunrise[0].split("T")[1]}
+          dawn={weather?.daily?.sunset[0].split("T")[1]}
+        />
       </View>
     </>
   ) : null;
