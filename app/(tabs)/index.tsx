@@ -6,10 +6,12 @@ import {
   getCurrentPositionAsync,
   requestForegroundPermissionsAsync,
 } from "expo-location";
+import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { ImageSourcePropType, StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
+  const router = useRouter();
   const [coords, setCoords] = useState<null | {
     lat: number;
     lon: number;
@@ -73,6 +75,7 @@ export default function Index() {
             getWeatherInterpretation(currentWeather?.weathercode)
               ?.image as ImageSourcePropType
           }
+          onPress={() => router.push("/Forecast")}
         />
       </View>
       <View style={styles.meteo_searchbar}>
